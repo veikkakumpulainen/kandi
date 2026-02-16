@@ -1,0 +1,8 @@
+\babel@toc {english}{}\relax 
+\babel@toc {finnish}{}\relax 
+\contentsline {chapter}{\numberline {1}Johdanto}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Kirjallisuuskartoitus}{2}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Tutkimusaihe ja tutkimuskysymykset}{3}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Tutkimusmenetelmä}{4}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Johtopäätökset ja tutkimuksen merkitys}{5}{chapter.5}%
+\contentsline {chapter}{L\"ahteet}{6}{section*.2}%
