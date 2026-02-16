@@ -17,10 +17,8 @@
 \title{Tutkimussuunnitelma}
 \translatedtitle{Research Plan}
 \studyline{Tieto- ja ohjelmistotekniikka}
-\avainsanat{%
-  \LaTeX,
-  kandidaatintutkielmat}
-\keywords{\LaTeX, Bachelor's Theses}
+\avainsanat{LaTeX, kandidaatintutkielmat}
+\keywords{LaTeX, Bachelor's Theses}
 \tiivistelma{%
 Tutkimus generatiivisen tekoälyn vaaroista ja huonoista puolista ohjelmistokehityksessä.
 }
@@ -41,31 +39,33 @@ Jyväskylässä \today
 
 Tutkielman tekijä
 
-%\begin{thetermlist}
-%\item[\TeX] Donald Knuthin 1977--1989 laatima eräajotyyppinen
-% ladontajärjestelmä \parencite[ks.][]{knuth86:_texbook}. 
-%\item[\LaTeX] \TeX in \parencite[ks.][]{knuth86:_texbook} päälle
-% rakennettu rakenteisten kirjoitelmien ladontaan tarkoitettu
-%  järjestelmä \parencite[ks.][]{lamport94:_latex}.  Siitä on nykyään
-%  käytössä versio \LaTeXe.
-%\end{thetermlist}
-
 \mainmatter
 
 \chapter{Johdanto}
 
-Generatiivista tekoälyä käytetään nykyään paljon ohjelmistokehityksessä, mutta tietääkö kaikki ohjelmistokehityksen parissa työskentelevät sen vaaroista ja huonoista puolista. Teen kirjallisuuskatsauksen siitä, mitä vaaroja ja huonoja puolia generatiivisen tekoälyn käytöstä voi seurata ohjelmistokehityksessä. Tutkin, koska kaikkien ohjelmistokehityksen parissa työskentelevien olisi hyvä tietää haitoista. Tutkin lukemalla aiheesta tehtyjä tutkimuksia ja muodostamalla niiden pohjalta kokonaisuuden vaaroista ja huonoista puolista.
+Generatiivista tekoälyä käytetään nykyään paljon ohjelmistokehityksessä, mutta tietääkö kaikki ohjelmistokehityksen parissa työskentelevät sen vaaroista ja huonoista puolista. Teen kirjallisuuskatsauksen siitä, mitä vaaroja ja huonoja puolia generatiivisen tekoälyn käytöstä voi seurata ohjelmistokehityksessä. Tutkin, koska kaikkien ohjelmistokehityksen parissa työskentelevien olisi hyvä tietää haitoista. Tutkin lukemalla aiheesta tehtyjä tutkimuksia ja muodostamalla niiden pohjalta kokonaisuuden vaaroista ja huonoista puolista. Aluksi määrittelen oleellisimmat käsitteet, jonka jälkeen esittelen vaarat ja huonot puolet. Seuraavaksi pohdin, miten tekoälyn haittoja voi minimoida ohjelmistokehityksessä. Lopuksi on yhteenveto.
 
-\chapter{Kirjallisuuskartoitus}
+\chapter{Tekoälyn vaarat ja huonot puolet}
+
+\section{Määritelmät}
 
 Ohelmistokehityksellä tarkoitetaan joukkoa toimintoja, jotka keskittyvät ohjelmiston luomiseen, suunniteluun, käyttöönottoon ja tukemiseen. Ohjelmistokehityksen tavoitteena on luoda tuote, joka täyttää käyttäjien tarpeet ja liiketoiminnan tehokkaalla, toistettavalla ja turvallisella tavalla. Ohjelmistokehittäjät, ohjelmoijat ja ohjelmistosuunnittelijat kehittävät ohjelmistoja sarjassa, jota kutsutaan ohjelmistokehityksen elinkaareksi. Tekoälypohjaisia työkaluja ja generatiivista tekoälyä käytetään yhä enemmän tukemaaan ohjelmistokehitystiimejä koodin tuottamisessa ja testaamisessa. \parencite{noauthor_what_2024}
 
+Generatiivinen tekoäly tarkoittaa syväoppimismalleja, jotka pystyvät tuottamaan monimutkaistaa alkuperäistä sisältöä, kuten pitkiä tekstikokonaisuuksia, korkealaatuisia kuvia, realistisia videoita tai ääntä sekä muuta sisältöä käyttäjän antaman kehotteen perusteella. Yleisellä tasolla generatiiviset mallit koodavat yksinkertaistetun esityksen koulutusdatastaan ja hyödyntävät tätä esitystä tuottaakseen uutta sisältöä, joka on samankaltaisia mutta ei identtisitä alkuperäisen datan kanssa. \parencite{noauthor_what_2024_1} Eli generatiivinen tekoäly pystyy luomaan myös koodia.
 
-Generatiivinen tekoäly tarkoittaa syväoppimismalleja, jotka pystyvät tuottamaan monimutkaistaa alkuperäistä sisältöä, kuten pitkiä tekstikokonaisuuksia, korkealaatuisia kuvia, realistisia videoita tai ääntä sekä muuta sisältöä käyttäjän antaman kehotteen perusteella. Yleisellä tasolla generatiiviset mallit koodavat yksinkertaistetun esityksen koulutusdatastaan ja hyödyntävät tätä esitystä tuottaakseen uutta sisältöä, joka on samankaltaisia mutta ei identtisitä alkuperäisen datan kanssa. \parencite{noauthor_what_2024-1} Eli generatiivinen tekoäly pystyy luomaan myös koodia.
+\section{Suorituskyky}
+
+GutHub Copilotin generoima koodi tuottaa toimiviaa koodia, mutta usein häviää suorituskyvyssä ihmisen tekemälle. \parencite{li_assessing_2024}
+
+Ihmiset päihittävät tekoälyn subjektiivisissa ja laadullisissa arvioissa. Aiempi kokemus, oivallus ja kokonaisvaltainen näkemys ovat ja tulevat olemaan ihmisille ominaisia vahvuuksia. Nämä antavat ihmisille ihmisille edun epäselvien ja monitulkintaisten tilanteiden käsittelyssä. Intuitiivisten kykyjensä ansiosta ihmiset ovat yhä parempia hahmottamaan kokonaiskuvan laajasti. \parencite{jarrahi_artificial_2018}
 
 Kun tekoälyä käyttää ohjelmistonkehitykseen, se luo piilevää teknistä velkaa. Vaikka ongelma ratkeaa nopeasti ei tiedetä, mitä ongelmia nopea tekoälyn suosittelema korjaus tuo ja mahdollisia kuluja jälkikäteen. \parencite{sculley_hidden_2015} 
 
-GutHub Copilotin generoima koodi tuottaa toimiviaa koodia, mutta usein häviää suorituskyvyssä ihmisen tekemälle. \parencite{li_assessing_2024}
+\section{Tietoturva ja turvallisuus}
+
+Ohjelmistokehittäjille on erittäin yleistä hakea yleista koodausapua kielimalleilta. Kielimallit suoriutuvat kuitenkin heikosti turvallisuuteen liittyvien haavoittuvuukisen tunnistamisessa.  \parencite{sajadi_llms_2025}
+
+GPT-3.5-turbo tuottaa haavoittuvuuksia C-koodia generoitaessa. 112 000 itsenäisesti käännettävässä C-ohjelmassa havaittiin 197800 haavoittuvaa funktiota. \parencite{tihanyi_formai_2023}
 
 \chapter{Tutkimusaihe ja tutkimuskysymykset}
 

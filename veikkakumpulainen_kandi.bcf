@@ -4980,9 +4980,12 @@
   </bcf:bibdata>
   <bcf:section number="0">
     <bcf:citekey order="1" intorder="1">noauthor_what_2024</bcf:citekey>
-    <bcf:citekey order="2" intorder="1">noauthor_what_2024-1</bcf:citekey>
-    <bcf:citekey order="3" intorder="1">sculley_hidden_2015</bcf:citekey>
-    <bcf:citekey order="4" intorder="1">li_assessing_2024</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">noauthor_what_2024_1</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">li_assessing_2024</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">jarrahi_artificial_2018</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">sculley_hidden_2015</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">sajadi_llms_2025</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">tihanyi_formai_2023</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="cms">
