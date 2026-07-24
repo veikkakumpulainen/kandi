@@ -1,12 +1,7 @@
-# LaTeX
-*.aux
-*.bbl
-*.bcf
-*.blg
-*.lof
-*.lot
-*.log
-*.out
-*.run.xml
-*.synctex.gz
-*.toc
+*
+
+!.gitignore
+
+!veikkakumpulainen_kandi.pdf
+!veikkakumpulainen_kandi.tex
+!veikkakumpulainen_kandi.bib

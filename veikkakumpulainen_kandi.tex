@@ -14,21 +14,21 @@
 
 \begin{document}
 
-\title{Tutkimussuunnitelma}
-\translatedtitle{Research Plan}
+\title{Generatiivisen tekoälyn haitat ja vaarat ohjelmistokehityksessä}
+\translatedtitle{The disadvantages and risks of generative artificial intelligence in software development}
 \studyline{Tieto- ja ohjelmistotekniikka}
-\avainsanat{LaTeX, kandidaatintutkielmat}
-\keywords{LaTeX, Bachelor's Theses}
+\avainsanat{generatiivinen tekoäly, ohjelmistokehitys, suuret kielimallit, tietoturva, suorituskyky, kontekstin hallinta}
+\keywords{generative artificial intelligence, software development, large language models, software security, performance, context management}
 \tiivistelma{%
-Tutkimus generatiivisen tekoälyn vaaroista ja huonoista puolista ohjelmistokehityksessä.
+Tässä kandidaatintutkielmassa tarkastellaan generatiivisen tekoälyn haittoja ja vaaroja ohjelmistokehityksessä kirjallisuuskatsauksen avulla. Keskeisiksi ongelmiksi tunnistetaan tekoälyn tuottaman koodin heikko suorituskyky, tietoturvahaavoittuvuudet sekä puutteet laajojen kontekstien hallinnassa. Tulokset korostavat, että tekoälyä tulisi käyttää tukityökaluna, ei itsenäisenä ratkaisijana, ja sen käyttö edellyttää kriittistä arviointia sekä kehittäjien osaamisen vahvistamista.
 }
 \abstract{%
-Research on the risks and disadvantages of using generative artificial intelligence in software development
+This bachelor’s thesis examines the disadvantages and risks of generative artificial intelligence in software development through a literature review. The main issues identified include poor performance of AI-generated code, security vulnerabilities, and limitations in handling large contexts. The findings emphasize that AI should be used as a supportive tool rather than an autonomous solution, and its use requires critical evaluation and strengthened developer expertise.
 }
 
 \author{Veikka Kumpulainen}
-\contactinformation{\texttt{veikka.e.kumpulainen@jyu.fi}}
-\supervisor{Sanna Juutinen}
+\contactinformation{\texttt{veikka.e.kumpulainen@student.jyu.fi}}
+\supervisor{Sanna Juutinen, Simo Lehtinen}
 \subject{Tieto- ja ohjelmistotekniikan}
 
 \maketitle
@@ -37,47 +37,98 @@ Jyväskylässä \today
 
 \bigskip
 
-Tutkielman tekijä
-
 \mainmatter
 
 \chapter{Johdanto}
 
-Generatiivista tekoälyä käytetään nykyään paljon ohjelmistokehityksessä, mutta tietääkö kaikki ohjelmistokehityksen parissa työskentelevät sen vaaroista ja huonoista puolista. Teen kirjallisuuskatsauksen siitä, mitä vaaroja ja huonoja puolia generatiivisen tekoälyn käytöstä voi seurata ohjelmistokehityksessä. Tutkin, koska kaikkien ohjelmistokehityksen parissa työskentelevien olisi hyvä tietää haitoista. Tutkin lukemalla aiheesta tehtyjä tutkimuksia ja muodostamalla niiden pohjalta kokonaisuuden vaaroista ja huonoista puolista. Aluksi määrittelen oleellisimmat käsitteet, jonka jälkeen esittelen vaarat ja huonot puolet. Seuraavaksi pohdin, miten tekoälyn haittoja voi minimoida ohjelmistokehityksessä. Lopuksi on yhteenveto.
+Generatiivista tekoälyä käytetään nykyään paljon ohjelmistokehityksessä, esimerkiksi koodin tuottamisessa ja testaamisessa \parencite{gu_challenges_2025}. Työkalut, kuten GitHub Copilot ja muut suuret kielimallit voivat tuoda kehittäjälle hyötyjä tuottavuudessa, mutta niiden käyttöönottoon liittyy myös haittoja ja vaaroja, joita ei vielä täysin ymmärretä \parencite{perry_users_2023}. Erityisesti tekoälyn tuottaman koodin turvallisuus, suorituskyky ja luotettavuus ovat nousseet keskeisiksi huolenaiheiksi. 
 
-\chapter{Tekoälyn vaarat ja huonot puolet}
+Tässä kandidaatintyössä tarkastellaan kirjallisuuskatsauksen avulla, millaisia haittoja ja vaaroja generatiivisen tekoälyn käytöstä voi seurata ohjelmistokehityksessä. Aihetta tutkitaan, koska on tärkeää, että kaikki ohjelmistokehityksen parissa työskentelevät ovat tietoisia generatiiviseen tekoälyyn liittyvistä riskeistä. Tutkimus toteutetaan perehtymällä aiheesta tehtyihin aiempiin tutkimuksiin ja muodostamalla niiden pohjalta kokonaiskuva generatiivisen tekoälyn käytön haittapuolista ja vaaroista.
+
+Työn alussa esitellään tutkimuksen kannalta keskeiset käsitteet ja perustellaan, miksi aihe on merkityksellinen ja ajankohtainen. Tämän jälkeen tarkastellaan syvällisemmin tekoälyn tuottaman koodin ongelmia suorituskyvyn, tietoturvan ja kontekstinhallinnan näkökulmista sekä pohditaan keinoja, joilla näitä haittoja voidaan mahdollisesti minimoida. Lopuksi esitetään työn keskeiset johtopäätökset yhteenvedon muodossa.
+
+Tutkimuskysymykset:
+\begin{itemize}
+	\item Mitä haittoja ja vaaroja tekoälyn käyttö aiheuttaa ohjelmistokehityksessä?
+	\item Miten tekoälyn haitat voidaan minimoida ohjelmistokehityksessä?
+\end{itemize}
+
+\chapter{Määritelmiä ja miksi tutkitaan}
+
+Tässä luvussa esitellään tutkielman kannalta keskeiset käsitteet ja rajataan tutkimuksen aihepiiri. Seuraavaksi perustellaan, miksi aihe on ajankohtainen ja miksi sitä on tärkeä tutkia ohjelmistokehityksen nykyisessä toimintaympäristössä. Luvun jälkeen lukijalla on kokonaiskuva tekoälyn laajasta käytöstä ohjelmistokehityksessä sekä siihen liittyvistä haasteista ja ongelmakohdista.
 
 \section{Määritelmät}
 
-Ohelmistokehityksellä tarkoitetaan joukkoa toimintoja, jotka keskittyvät ohjelmiston luomiseen, suunniteluun, käyttöönottoon ja tukemiseen. Ohjelmistokehityksen tavoitteena on luoda tuote, joka täyttää käyttäjien tarpeet ja liiketoiminnan tehokkaalla, toistettavalla ja turvallisella tavalla. Ohjelmistokehittäjät, ohjelmoijat ja ohjelmistosuunnittelijat kehittävät ohjelmistoja sarjassa, jota kutsutaan ohjelmistokehityksen elinkaareksi. Tekoälypohjaisia työkaluja ja generatiivista tekoälyä käytetään yhä enemmän tukemaaan ohjelmistokehitystiimejä koodin tuottamisessa ja testaamisessa. \parencite{noauthor_what_2024}
+Ohjelmistokehityksellä tarkoitetaan joukkoa toimintoja, jotka keskittyvät ohjelmiston luomiseen, suunniteluun, käyttöönottoon ja tukemiseen. Ohjelmistokehityksen tavoitteena on luoda tuote, joka täyttää käyttäjien tarpeet ja liiketoiminnan tehokkaalla, toistettavalla ja turvallisella tavalla. Ohjelmistokehittäjät, ohjelmoijat ja ohjelmistosuunnittelijat kehittävät ohjelmistoja sarjassa, jota kutsutaan ohjelmistokehityksen elinkaareksi. Tekoälypohjaisia työkaluja ja generatiivista tekoälyä käytetään yhä enemmän tukemaan ohjelmistokehitystiimejä koodin tuottamisessa ja testaamisessa \parencite{noauthor_what_2024}.
 
-Generatiivinen tekoäly tarkoittaa syväoppimismalleja, jotka pystyvät tuottamaan monimutkaistaa alkuperäistä sisältöä, kuten pitkiä tekstikokonaisuuksia, korkealaatuisia kuvia, realistisia videoita tai ääntä sekä muuta sisältöä käyttäjän antaman kehotteen perusteella. Yleisellä tasolla generatiiviset mallit koodavat yksinkertaistetun esityksen koulutusdatastaan ja hyödyntävät tätä esitystä tuottaakseen uutta sisältöä, joka on samankaltaisia mutta ei identtisitä alkuperäisen datan kanssa. \parencite{noauthor_what_2024_1} Eli generatiivinen tekoäly pystyy luomaan myös koodia.
+Generatiivinen tekoäly tarkoittaa syväoppimismalleja, jotka pystyvät tuottamaan monimutkaista alkuperäistä sisältöä, kuten pitkiä tekstikokonaisuuksia, korkealaatuisia kuvia, realistisia videoita tai ääntä sekä muuta sisältöä käyttäjän antaman kehotteen perusteella. Yleisellä tasolla generatiiviset mallit koodaavat yksinkertaistetun esityksen koulutusdatastaan ja hyödyntävät tätä esitystä tuottaakseen uutta sisältöä, joka on samankaltaisia mutta ei identtistä alkuperäisen datan kanssa \parencite{noauthor_what_2024-1}. Tämän takia generatiivista tekoälyä voidaan käyttää ohjelmointitehtävien tukena, kuten koodin generoinnissa, muokkauksessa ja testaamisessa. Tässä tutkielmassa keskitytään generatiiviseen tekoälyyn, erityisesti suuriin kielimalleihin.
+
+\section{Miksi tutkia}
+
+Vuoden 2023 kyselyn mukaan 92 prosenttia Yhdysvalloissa työskentelevistä kehittäjistä hyödynsi tekoälyä töissä ja töiden ulkopuolella \parencite{staff_survey_2023}, ja alan kyselyt osoittavat, että yli 65 prosenttia ammattikehittäjistä käyttää jonkinlaista tekoälytukea osana päivittäistä työskentelyä \parencite{rahman_international_2024}. Tekoälytyökaluja on otettu käyttöön suurten teknologiayritysten kehitysprosessissa, joissa niiden on raportoitu tuottavan 30–50 prosentin tuottavuusparannuksia sekä merkittäviä lyhennyksiä ohjelmistotuotteiden julkaisuaikoihin. Empiirinen tutkimus ei ole pysynyt perässä arvioidessaan nopean käyttöönoton vaikutuksia kriittisiin ohjelmistotekniikan osa-alueisiin, kuten koodin laatuun, turvallisuuteen ja pitkäaikaiseen ylläpidettävyyteen \parencite{rahman_international_2024}. Tämän takia aiheitta on tärkeä tutkia, koska tekoälyä käytetään paljon ja sen vaikutuksia kriittisiin ohjelmistotekniikan osa-alueisiin, ei ole keretty tutkia tarpeeksi.
+
+Suorituskyky ja tietoturva ovat olennaisia osia ohjelmiston laatua. Suorituskyvyn heikkeneminen voi vaikuttaa sovelluksen reagointinopeuteen, resurssien kulutukseen ja yleiseen käyttökokemukseen \parencite{li_assessing_2024}. 55–65 prosenttia kehittäjistä pelkää AI-työkalujen tuottavan tietoturvahaavoittuvuuksia. Yleisimpiä huolia ovat epäselvä riskienhallinta, haavoittuva koodi ja riskialttiit koodirakenteet \parencite{staff_survey_2023}. Tämän takia jokaisen ohjelmistokehityksen parissa työskentelevän olisi hyvä tietää ainakin tyypillisimmät haitat ja vaarat, joita tekoäly tekee koodiin.
+
+Ohjelmistokehityksessä joudutaan usein käsittelemään erittäin suuria koodikantoja. Esimerkiksi Google ylläpitää yhtä yhteistä versionhallintavarastoa (monorepoa), joka sisältää yli kaksi miljardia riviä koodia ja yli yhdeksän miljoonaa lähdetiedostoa \parencite{noauthor_inside_2024}. Kielimallit eivät pysty käsittelemään näin suuria konteksteja. Lisäksi ihmiset päihittävät tekoälyn subjektiivisissa ja laadullisissa arvioissa. Aiempi kokemus, oivallus ja kokonaisvaltainen näkemys ovat ja tulevat olemaan ihmisille ominaisia vahvuuksia. Nämä antavat ihmisille edun epäselvien ja monitulkintaisten tilanteiden käsittelyssä. Intuitiivisten kykyjensä ansiosta ihmiset ovat yhä parempia hahmottamaan kokonaiskuvan laajasti \parencite{jarrahi_artificial_2018}. Näiden tekijöiden vuoksi tekoälyn ei voida odottaa korvaavan ihmistä ja ihmisen rooli säilyy korvaamattomana, kun käsitellään laajempia kokonaisuuksia ja konteksteja. Tekoäly on kuitenkin tullut jäädäkseen, jonka takia olisi hyvä oppia käyttämään sitä mahdollisimman tehokkaasti ja turvallisesti apuvälineenä ohjelmistokehityksessä työn laadun parantamiseksi.
+
+\chapter{Vaarat ja huonot puolet ohjelmistokehityksessä}
+
+Tässä luvussa tarkastellaan generatiivisen tekoälyn käytöstä ohjelmistokehityksessä aiheutuvia keskeisiä vaaroja ja haittapuolia. Tarkastelu keskittyy erityisesti suorituskykyyn, tietoturvaan ja kontekstinhallintaan liittyviin ongelmiin, joita tekoälyn tuottama koodi voi sisältää. Luvun tavoitteena on tuoda esiin tutkimuskirjallisuudessa havaittuja riskejä ja havainnollistaa, miksi tekoälyn käyttö edellyttää kriittistä arviointia ohjelmistokehityksessä.
 
 \section{Suorituskyky}
 
-GutHub Copilotin generoima koodi tuottaa toimiviaa koodia, mutta usein häviää suorituskyvyssä ihmisen tekemälle. \parencite{li_assessing_2024}
+ \textcite{li_assessing_2024} mukaan GitHub Copilotin generoima koodi tuottaa toimivaa koodia, mutta usein häviää suorituskyvyssä ihmisen tekemälle. Syitä tekoälyllä generoidun koodin suorituskyvyn heikkenemiseen on tehottomat funktiokutsut, tehottomat silmukkarakenteet, tehottomat algoritmit ja ohjelmointikielen ominaisuuksien tehoton käyttö. Esimerkkejä näistä on liiallinen rekursiivisten funktioiden käyttö, toistuva merkkijonojen liittäminen +- operaattoreilla, useiden sisäkkäisten silmukoiden käyttö ja toistuva olioiden luominen silmukoissa. Tekoälyllä generoitu koodi valitsee usein vähemmän tehokkaita funktiota, vaikka olisi tarjolla optimaalisempia funktiota tehokkuuden parantamiseksi. Algoritmit voivat olla myös tehottomia, jos tekoälyn generoima koodi ohittaa matemaattisen optimoinnin ja käyttää epätarkoituksenmukaista ehtologiikkaa. Ohjelmointikielen ominaisuuksien tehotonta käyttöä on kielen ominaisuuksien alihyödyntäminen, käyttämättömät muuttujat ja tehoton poikkeuskäsittely \parencite{li_assessing_2024}. Näiden havaintojen perusteella voidaan päätellä, että generatiivisen tekoälyn generoima koodi voi olla suorituskyvyltään heikkoa. Tällöin tekoälyn tuottama koodi on usein riittävää prototyyppien tai pienten tehtävien toteuttamiseen, mutta isommissa järjestelmissä voi syntyä merkittäviä tehokkuusongelmia.
 
-Ihmiset päihittävät tekoälyn subjektiivisissa ja laadullisissa arvioissa. Aiempi kokemus, oivallus ja kokonaisvaltainen näkemys ovat ja tulevat olemaan ihmisille ominaisia vahvuuksia. Nämä antavat ihmisille ihmisille edun epäselvien ja monitulkintaisten tilanteiden käsittelyssä. Intuitiivisten kykyjensä ansiosta ihmiset ovat yhä parempia hahmottamaan kokonaiskuvan laajasti. \parencite{jarrahi_artificial_2018}
+Kielimallit tuottavat usein rakenteellisesti liian monimutkaisia ratkaisuja. Ne välttelevät abstraktointia ja rakentavat koodia "copy-paste" -tyylisesti, eli monistamalla koodia eri paikkoihin hyödyntämättä abstraktointia, mikä lisää toisteisuutta ja hidastaa ohjelman suorittamista \parencite{gu_challenges_2025}. Tämä johtaa hitaampaan ja tehottomampaan ohjelmakoodiin. Nykyiset suuret kielimallit ovat optimoitu ensisijaisesti ratkaisemaan lyhyitä, funktiotason tehtäviä, eivätkä ne kykene huomioimaan projektitason optimointia tai laajojen koodirakenteiden yhteensopivuutta \parencite{gu_challenges_2025}. Suorituskyvyn heikkenemistä lisää, että esimerkiksi Copilotin taustalla olevat algoritmit on optimoitu ensisijaisesti niin, että käyttäjä hyväksyy ehdotuksen, eikä siihen, että koodi olisi turvallista, tehokasta ja helppoa ylläpitää \textcite{fu_security_2025} tutkimuksen mukaan. Malli pyrkii tuottamaan koodia, joka näyttää uskottavalta ja "oikealta", vaikka se ei välttämättä olisi tehokasta ja laadukasta. Tämä voi johtaa ratkaisuihin, joissa koodi toimii pintatasolla, mutta sisältää suorituskykyä heikentäviä rakenteita ja ratkaisuja.
 
-Kun tekoälyä käyttää ohjelmistonkehitykseen, se luo piilevää teknistä velkaa. Vaikka ongelma ratkeaa nopeasti ei tiedetä, mitä ongelmia nopea tekoälyn suosittelema korjaus tuo ja mahdollisia kuluja jälkikäteen. \parencite{sculley_hidden_2015} 
+Kuviossa 1 on esimerkki Chat-GPT:n 5.3 genoroimasta vastauksesta, kun sille annettiin syöte: "Provide a small C program that adds two numbers together".
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{esimerkkic.png}
+    \caption{Chat-GPT:n (v. 5.3) generoima koodi. Syöte: Provide a small C program that adds two numbers together.}
+    \label{fig:kaavio}
+\end{figure}
+
+Ohjelma lukee kaksi lukua, joiden yhteenlasku voi tuottaa arvon, joka ylittää "int"-tyypin esityskyvyn. Tämä voi johtaa kokonaislukujen ylivuotoon. Kuviossa 1 oleva esimerkki havainnollistaa hyvin, kuinka kielimallin tuottama koodi voi sisältää kriittisiä virheitä. Lisäksi \textcite{tihanyi_formai_2023} tutkimuksessa käsiteltiin esimerkin ohjelmaa ja todettiin, että kielimalli ei osaa ratkaista ongelmaa, vaikka siltä pyydettäisiin turvallinen versio. Kielimalli pystyi korjaamaan ohjelman, vasta kun sille annettiin ESBMC-moduulin tuottama tuloste. ESBMC-moduulin tuottama tuloste kertoo, täyttyvätkö ohjelmalle määritellyt ominaisuudet, kuten muistiturvallisuus, taulukon rajat ja osoittimien käyttö \parencite{noauthor_esbmc_nodate}
 
 \section{Tietoturva ja turvallisuus}
 
-Ohjelmistokehittäjille on erittäin yleistä hakea yleista koodausapua kielimalleilta. Kielimallit suoriutuvat kuitenkin heikosti turvallisuuteen liittyvien haavoittuvuukisen tunnistamisessa.  \parencite{sajadi_llms_2025}
+Ohjelmistokehittäjille on erittäin yleistä hakea yleistä koodausapua suurilta kielimalleilta, kuten ChatGPT:ltä tai GitHub Copilotilta. Seuraavaksi esiteltävien tutkimusten mukaan kielimallit suoriutuvat kuitenkin heikosti turvallisuuteen liittyvien haavoittuvuuksien tunnistamisessa. Vuonna 2023 tehdyssä tutkimuksessa havaittiin, että tekoälyä käyttävät osallistujat olivat useammin taipuvaisia tuottamaan tietoturvahaavoittuvuuksia sisältävää koodia verrattuna niihin, jotka suorittivat tehtävät ilman tekoälyn apua suurimmassa osassa heille annettuja ohjelmointitehtäviä \parencite{perry_users_2023}. Tekoälyavusteinen koodaus voi heikentää kehittäjän valppautta ja lisätä virheiden syntymistä.
 
-GPT-3.5-turbo tuottaa haavoittuvuuksia C-koodia generoitaessa. 112 000 itsenäisesti käännettävässä C-ohjelmassa havaittiin 197800 haavoittuvaa funktiota. \parencite{tihanyi_formai_2023}
+Tekoälyn käytön vaikutuksista tietoturvaan on saatu myös merkittäviä tuloksia. \textcite{rahman_international_2024} mukaan tekoälyavusteinen koodaus tuottaa keskimäärin 23,7 prosenttia enemmän tietoturvahaavoittuvuuksia kuin ilman tekoälyn apua tuotettu koodi. Kriittiset haavoittuvuudet lisääntyivät 89 prosenttia ja korkean vakavuuden haavoittuvuudet 47 prosenttia tekoälyä hyödyntäessä. Koodikatselmuksissa kuitenkin 76 prosenttia tekoälyn tuottamista haavoittuvuuksista jäi kehittäjiltä huomaamatta, kun ihmisen tuottaman koodin katselmuksessa vastaava luku oli 52 prosenttia. Tämä osoittaa, että kehittäjät luottavat tekoälyn tuottamaan koodiin enemmän kuin ihmisen kirjoittamaan, vaikka tutkimusnäyttö antaa syyn päinvastaiseen.
 
-\chapter{Tutkimusaihe ja tutkimuskysymykset}
+GPT-3.5-turbo tuotti 112 000 itsenäisesti käännettävässä C-ohjelmassa 197800 haavoittuvaa funktiota, jotka havaittiin \textcite{tihanyi_formai_2023} tutkimuksessa. Lisäksi 29,5 prosenttia GitHub Copilotin tuottamasta Python-koodista ja 24,2 prosenttia JavaScript-koodista sisälsi tietoturvahaavoittuvuuksia \textcite{fu_security_2025} tekemän tutkimuksen mukaan. Tutkimuksessa löytyi myös kahdeksan sellaista haavoittuvuutta, jotka ovat CWE Top 25 (2023) -listalla. CWE-lista on kansainvälinen tietoturvaheikkouksien luokittelujärjestelmä. Lisäksi \textcite{sajadi_llms_2025} tutkimuksessa havaittiin, että kolme suurta kielimallia saavuttivat 12,6–40 prosentin tunnistusasteen haavoittuvuuksien tarkassa tunnistamisessa ja käyttäjien varoittamisessa. Juuri mainitut empiiriset tutkimukset osoittavat, että generatiivinen tekoäly tuottaa huomattavan määrän haavoittuvaa koodia ja jättää myös huomauttamatta käyttäjän tarjoamassa koodissa olevista tietoturvariskeistä. Tämä korostaa kielimallien rajoitteita tietoturvan analysoinnissa ja ihmisen roolia ohjelmistonkehitysprosessissa. Jos tekoälyyn luottaa sokeasti, niin virheitä tulee erittäin suurella todennäköisyydellä. 
 
-Tutkimusaihe on generatiivisen tekoälyn käytön riskit ja huonot puolet ohjelmistokehityksessä, joista ohjelmistonkehityksen parissa työskentelevien olisi hyvä olla tietoinen. Tutkimuskysymyksiä voisi olla mitä haittoja generatiivisen tekoälyn vastuuton käyttö aiheuttaa ohjelmistokehityksessä. Mitä vaaroja liittyy tekoälyllä generoidun koodin luotettavuuteen ja turvallisuuteen. Miten tekoälyn haitat voidaan minimoida ohjelmistokehityksessä.
+Yksi keskeinen syy haavoittuvuuksien syntymiseen on kielimallien koulutusdata. Suuret kielimallit on koulutettu miljardeilla julkisilla avoimen lähdekoodin riveillä, jotka sisältävät turvattomia koodauskäytäntöjä \parencite{fu_security_2025}. GitHub Copilotin taustalla oleva Codex-malli on esikoulutettu GitHubista peräisen olevalla epäluotettavalla datalla, jonka takia se voi tuottaa turvattomia koodinpätkiä ja GPT-malli on koulutettu avoimella koodilla, jossa esiintyy väärin toteutettuja ratkaisuja, haavoittuvia funktioita ja virheellisiä suunnittelumalleja \parencite{fu_security_2025, tihanyi_formai_2023}.  Kun haavoittuvaa koodia käytetään projekteissa, se päätyy takaisin mallien treenidataan ja syntyy kierre, jossa generatiiviset mallit tuottavat yhä lisää haavoittuvaa koodia \parencite{fu_security_2025}. 
 
-\chapter{Tutkimusmenetelmä}
+Kielimallit tuottavat myös epätäydellistä, haavoittuvaa tai väärää koodia, vaikka testit menisivät läpi. Ne eivät osaa priorisoida turvallisuutta, koska koulutusdata sisältää paljon huonolaatuista ja haavoittuvaa koodia \parencite{gu_challenges_2025}. Lisäksi tekoäly toistaa koodia mieluummin kuin rakentaa hyvälaatuisia rakenteita. \parencite{gu_challenges_2025} Tämän takia tekninen velka kasvaa nopeasti.
 
-Etsin lähteitä scopuksesta eri hakusanoilla ja lisäksi kysyin copilotilta hyviä mahdollisia lähteitä koskien aihettani. Googlesta etsin suoraan myös lähteitä. Valitsin parhaat lähteet sen perusteella, jos niissä oli käsitelty aiheeni kannalta ajankohtaisia asioita ja julkaisualusta oli luotettava. Lisäksi löysin yhden kandityön samaan aiheeseen liittyen ja katsoin sen lähdeluettelosta mahdollisia hyviä lähteitä.
+\section{Kontekstin hallinta}
 
-\chapter{Johtopäätökset ja tutkimuksen merkitys}
+Kielimalleilla on haasteita ylläpitää laajoja ja monimutkaisia konteksteja ohjelmistokehityksessä. Mallit toimivat rajatulla syötteellä, eivätkä ne pysty hahmottamaan kokonaista järjestelmäkokonaisuutta yhdellä kertaa. Tämä rajoittaa mallien kykyä tuottaa johdonmukaisia kokonaisarkkitehtuureja tai ymmärtää pitkän kehitysprosessin riippuvuuksia. Kielimallit vaativat usein tehtävien jakamista pieniin osiin, mikä lisää riskiä, että ratkaisuista tulee epäyhtenäisiä, ristiriitaisia tai väärällä abstraktiotasolla toimivia \parencite{belzner_large_nodate}. Kielimallit ei useinkaan ymmärrä projektin kokonaista arkkitehtuuria, riippuvuuksia ja sitä, miten yksittäinen funktio vaikuttaa muualla \parencite{fu_security_2025}. Tekoäly ymmärtää koodia vain paikallisesti, ei projektitasolla. Se ei hahmota ohjelmiston arkkitehtuuria tai kokonaislogiikkaa ja epäonnistuu usein pitkissä riippuvuuksissa ja monimutkaisissa koodipoluissa. \parencite{gu_challenges_2025}
 
-Tutkimuksen avulla ohjelmistokehityksen parissa työskentelevät voivat saada paremman tietoisuuden riskeistä ja huonoista puolista, joita generatiivisen tekoälyn vastuuttomasta käytöstä voi seurata ja parantaa omaa työnlaatua ja koodinlaatua tämän avulla.
+Kontekstin hallinnan ongelmia korostaa myös kielimallien päätöksenteon läpinäkymättömyys. Lähes puolet kehittäjistä kokee, etteivät he ymmärrä, miksi tekoäly valitsee tietyn ratkaisun, mikä vaikeuttaa sen tuottaman koodin arviointia ja luotettavuutta \parencite{staff_survey_2023}. Myös käyttäjien antamat promptit ovat usein epätäydellisiä ja kielimallit täyttävät puuttuvat kohdat omilla oletuksillaan, jotka ovat usein vääriä. Monimutkaisissa projekteissa pienikin väärä oletus voi paisua ketjureaktioksi \parencite{gu_challenges_2025}.
+
+Kielimallit eivät myöskään kykene havaitsemaan omia tuottamiaan haavoittuvuuksia tai arvioimaan ratkaisujensa turvallisuutta kokonaisvaltaisesti. Se kuitenkin korjaa virheitä, jos saa formaalin analyysityökalun, kuten ESBMC:n, tuottaman counterexample-raportin. Tällainen raportti kertoo missä virhe tapahtuu ja miten se voidaan toistaa \parencite{tihanyi_formai_2023}. Tämä osoittaa, että ilman oikeaa työkalua kielimallit eivät ymmärrä virheiden lähteitä tai laajempaa kontekstia, joka olisi tärkeää monimutkaisten ohjelmistojen turvallisen ja johdonmukaisen kehittämisen kannalta.
+
+\chapter{Tekoälyn haittojen minimoiminen}
+
+Ihmisen asiantuntemuksella on korvaamaton rooli tekoälyn tukemassa ohjelmistokehityksessä. Tekoälyyn tulisi suhtautua yhteisötyökumppanina eikä autonomisena koodin tuottajana. Kehittäjien tulee säilyttää vastuu turvallisuuden varmistamisesta \parencite{shukla_security_2025}. Ihminen ja tekoäly yhdessä tuottavat parempaa laatua, kuin kumpikaan yksin \parencite{jarrahi_artificial_2018}. Tekoälyyn ei saa luottaa ilman kriittistä tarkastelua, sillä sen tuottamat ratkaisut voivat sisältää puutteita, joita tekoäly ei itse pysty havaitsemaan.
+
+Merkittävät osa kehittäjistä kokee, ettei heillä ole riittävästi osaamista tekoälyn turvalliseen käyttöön. \textcite{staff_survey_2023} mukaan 50–70 prosenttia kehittäjistä raportoi koulutusvajetta tekoälyn turvalliseen käyttöön, mikä lisää virheiden ja tietoturvariskien todennäköisyyttä. Ohjelmistokehityksen parissa työskentelevien organisaatioiden on otettava käyttöön prosesseja tietoturvatarkastuksille, syventävälle koulutukselle ja automatisoidulle tietoturva-analyysille, jotta ne tunnistaisivat tekoälyn tuottamaan koodiin liittyviä riskejä \parencite{rahman_international_2024}. Taitotason merkitys korostuu myös kehittäjäkokemuksen mukaan. 89 prosenttia juniorikehittäjistä hyväksyivät tekoälyn ehdotukset sellaisenaan, kun taas seniorikehittäjillä vastaava luku oli  62 prosenttia ja he tuottivat turvallisempaa koodia \parencite{rahman_international_2024}. Tämä kertoo, että kokematon kehittäjä on alttiimpi virheille ja liialliselle luottamukselle tekoälyyn.
+
+Tekoälyn tuottaman koodin laatua voidaan parantaa vaikuttamalla mallille annettuihin kehotteisiin. Esimerkiksi huolellisesti suunnitellut promptit voivat parantaa tekoälyn tuottaman koodin suorituskykyä \parencite{li_assessing_2024}. \textcite{perry_users_2023} tutkimuksessa on havaittu, että osallistujat, jotka panostivat enemmän tekoälylle antamiensa promptien muotoiluun, tuottivat todennäköisemmin turvallisia ratkaisuja. Myös \textcite{sajadi_llms_2025} tutkimuksessa huomattiin, että kun promptille antoi ohjeen "address security vulnerabilities" (huomioi tietoturvahaavoittuvuudet), parani kielimallien kyky havaita haavoittuvuuksia merkittävästi.  Kun Copilotille annetaan staattisen analyysityökalun varoitusviesti, korjaukset paranevat. Pelkästään antamalla kielimallille syötteeksi "fix" (korjaa) korjaantui 19,3 prosenttia tietoturvaongelmista, ja parannetulla syötteellä korjausaste nousi 55,5 prosenttiin \parencite{fu_security_2025}. Pelkkä yksinkertainen korjauskomento ei riitä, vaan jotta mallit korjaavat koodia paremmin, pitää niitä ohjata täsmällisillä varoitusviesteillä.
+
+\chapter{Yhteenveto}
+
+Tässä kandidaatintutkielmassa tarkasteltiin generatiivisen tekoälyn haittoja ja vaaroja ohjelmistonkehityksessä. Tavoitteena oli selvittää, mitä haittoja ja vaaroja syntyy, kun tekoälyä käytetään, ja miten voidaan minimoida haitat ohjelmistonkehityksessä. Tutkimus toteutettiin kirjallisuuskatsauksena hyödyntäen ajankohtaisia tieteellisiä tutkimuksia ja raportteja.
+
+Kirjallisuuskatsauksen perusteella keskeisimmät tekoälyn haitat ja vaarat ohjelmistonkehityksessä liittyvät tekoälyn tuottaman koodin suorituskykyyn, tietoturvaan ja kykyyn hallita laajoja konteksteja. Tekoälyn tuottama koodi oli useiden tutkimusten mukaan tehotonta ja sisälsi ylimääräisiä rakenteita ja epätarkoituksenmukaisia ratkaisuja. Lisäksi tekoälyn tuottamasta koodista löytyi huomattavasti enemmän haavoittuvuuksia, ja ne olivat vaikeammin havaittavissa kuin ihmisen kirjoittamasta koodista. Kielimallit toimivat myös rajallisesti, kun kontekstin koko kasvoi. Tekoälyn ratkaisut olivat huonolaatuisia kokonaisarkkitehtuurin kannalta ja piilevää teknistä velkaa syntyi helposti.
+
+Haittojen minimoimiseksi todettiin, että olisi hyvä ymmärtää tekoäly kehittämisen työkaluna eikä autonomisena koodin tuottajana. Tutkimukset osoittivat myös, että moni ohjelmistokehittäjä koki tekoälyn käytön koulutuksen puutteelliseksi. Oikeanlaisilla prompteilla pystyi vaikuttamaan huomattavasti tekoälyn tuottaman koodin laatuun.
+
+Jatkossa olisi tärkeää tutkia tekoälyn käytön vaikutuksia pitkällä aikavälillä koodin ylläpidettävyyteen, tietoturvaan ja teknisen velan kasvuun. Tulokset korostavat tarvetta kehittää käytäntöjä ja työkaluja, joilla tekoälystä saadaan paras hyöty irti minimoiden samalla haitat ja vaarat.
 
 \printbibliography
 
